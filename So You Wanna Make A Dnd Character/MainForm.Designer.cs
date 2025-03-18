@@ -656,7 +656,6 @@
             this.cantripLbl.Size = new System.Drawing.Size(56, 16);
             this.cantripLbl.TabIndex = 67;
             this.cantripLbl.Text = "Cantrips";
-            this.cantripLbl.Click += new System.EventHandler(this.cantripLbl_Click);
             // 
             // Armours
             // 
@@ -711,7 +710,6 @@
             this.ProgressBarBtn.TabIndex = 73;
             this.ProgressBarBtn.Text = "PROGRESS BAR SIZING";
             this.ProgressBarBtn.UseVisualStyleBackColor = true;
-            this.ProgressBarBtn.Click += new System.EventHandler(this.ProgressBarBtn_Click);
             // 
             // cantripsLbl
             // 
