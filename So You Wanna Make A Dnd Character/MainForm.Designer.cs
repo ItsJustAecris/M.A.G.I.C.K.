@@ -68,7 +68,7 @@
             this.WISbonusTxt = new System.Windows.Forms.RichTextBox();
             this.CHAbonusTxt = new System.Windows.Forms.RichTextBox();
             this.backgroundTb = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.backgroundTb1 = new System.Windows.Forms.TextBox();
             this.spellbookLbl = new System.Windows.Forms.Label();
             this.WeaponsLbl = new System.Windows.Forms.Label();
             this.classFeaturesLbl = new System.Windows.Forms.Label();
@@ -82,6 +82,10 @@
             this.CantripList = new System.Windows.Forms.CheckedListBox();
             this.ProgressBarBtn = new System.Windows.Forms.Button();
             this.cantripsLbl = new System.Windows.Forms.Label();
+            this.cantripLblCount = new System.Windows.Forms.Label();
+            this.spellbookLblCount = new System.Windows.Forms.Label();
+            this.RanNameBtn = new System.Windows.Forms.Button();
+            this.randomNameLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LevelPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.STRstats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DEXStats)).BeginInit();
@@ -181,6 +185,7 @@
             this.SpellCheckBox.Name = "SpellCheckBox";
             this.SpellCheckBox.Size = new System.Drawing.Size(140, 293);
             this.SpellCheckBox.TabIndex = 7;
+            this.SpellCheckBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.SpellCheckBox_ItemCheck);
             // 
             // FeatCheckBox
             // 
@@ -196,7 +201,7 @@
             this.runBtn.Location = new System.Drawing.Point(532, 630);
             this.runBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.runBtn.Name = "runBtn";
-            this.runBtn.Size = new System.Drawing.Size(259, 37);
+            this.runBtn.Size = new System.Drawing.Size(281, 37);
             this.runBtn.TabIndex = 9;
             this.runBtn.Text = "Print Character";
             this.runBtn.UseVisualStyleBackColor = true;
@@ -277,7 +282,7 @@
             // LevelPicker
             // 
             this.LevelPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LevelPicker.Location = new System.Drawing.Point(460, 25);
+            this.LevelPicker.Location = new System.Drawing.Point(462, 69);
             this.LevelPicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LevelPicker.Maximum = new decimal(new int[] {
             3,
@@ -304,7 +309,7 @@
             // LevelLabel
             // 
             this.LevelLabel.AutoSize = true;
-            this.LevelLabel.Location = new System.Drawing.Point(458, 7);
+            this.LevelLabel.Location = new System.Drawing.Point(460, 51);
             this.LevelLabel.Name = "LevelLabel";
             this.LevelLabel.Size = new System.Drawing.Size(40, 16);
             this.LevelLabel.TabIndex = 25;
@@ -315,7 +320,7 @@
             this.STRCheck.FormattingEnabled = true;
             this.STRCheck.Location = new System.Drawing.Point(639, 56);
             this.STRCheck.Name = "STRCheck";
-            this.STRCheck.Size = new System.Drawing.Size(146, 38);
+            this.STRCheck.Size = new System.Drawing.Size(174, 38);
             this.STRCheck.TabIndex = 26;
             // 
             // DEXCheck
@@ -323,7 +328,7 @@
             this.DEXCheck.FormattingEnabled = true;
             this.DEXCheck.Location = new System.Drawing.Point(639, 115);
             this.DEXCheck.Name = "DEXCheck";
-            this.DEXCheck.Size = new System.Drawing.Size(146, 38);
+            this.DEXCheck.Size = new System.Drawing.Size(174, 38);
             this.DEXCheck.TabIndex = 27;
             // 
             // CONCheck
@@ -331,7 +336,7 @@
             this.CONCheck.FormattingEnabled = true;
             this.CONCheck.Location = new System.Drawing.Point(639, 175);
             this.CONCheck.Name = "CONCheck";
-            this.CONCheck.Size = new System.Drawing.Size(146, 38);
+            this.CONCheck.Size = new System.Drawing.Size(174, 38);
             this.CONCheck.TabIndex = 28;
             // 
             // SMRTCheck
@@ -339,7 +344,7 @@
             this.SMRTCheck.FormattingEnabled = true;
             this.SMRTCheck.Location = new System.Drawing.Point(639, 237);
             this.SMRTCheck.Name = "SMRTCheck";
-            this.SMRTCheck.Size = new System.Drawing.Size(146, 38);
+            this.SMRTCheck.Size = new System.Drawing.Size(174, 38);
             this.SMRTCheck.TabIndex = 29;
             // 
             // WISCheck
@@ -347,7 +352,7 @@
             this.WISCheck.FormattingEnabled = true;
             this.WISCheck.Location = new System.Drawing.Point(639, 297);
             this.WISCheck.Name = "WISCheck";
-            this.WISCheck.Size = new System.Drawing.Size(146, 38);
+            this.WISCheck.Size = new System.Drawing.Size(174, 38);
             this.WISCheck.TabIndex = 30;
             // 
             // CHACheck
@@ -355,14 +360,14 @@
             this.CHACheck.FormattingEnabled = true;
             this.CHACheck.Location = new System.Drawing.Point(639, 357);
             this.CHACheck.Name = "CHACheck";
-            this.CHACheck.Size = new System.Drawing.Size(146, 38);
+            this.CHACheck.Size = new System.Drawing.Size(174, 38);
             this.CHACheck.TabIndex = 31;
             // 
             // StatRoll
             // 
             this.StatRoll.Location = new System.Drawing.Point(530, 406);
             this.StatRoll.Name = "StatRoll";
-            this.StatRoll.Size = new System.Drawing.Size(259, 39);
+            this.StatRoll.Size = new System.Drawing.Size(283, 39);
             this.StatRoll.TabIndex = 32;
             this.StatRoll.Text = "Stat Randomizer";
             this.StatRoll.UseVisualStyleBackColor = true;
@@ -587,19 +592,19 @@
             // backgroundTb
             // 
             this.backgroundTb.AutoSize = true;
-            this.backgroundTb.Location = new System.Drawing.Point(209, 98);
+            this.backgroundTb.Location = new System.Drawing.Point(209, 102);
             this.backgroundTb.Name = "backgroundTb";
             this.backgroundTb.Size = new System.Drawing.Size(80, 16);
             this.backgroundTb.TabIndex = 48;
             this.backgroundTb.Text = "Background";
             // 
-            // textBox1
+            // backgroundTb1
             // 
-            this.textBox1.Location = new System.Drawing.Point(209, 119);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(301, 85);
-            this.textBox1.TabIndex = 49;
+            this.backgroundTb1.Location = new System.Drawing.Point(209, 119);
+            this.backgroundTb1.Multiline = true;
+            this.backgroundTb1.Name = "backgroundTb1";
+            this.backgroundTb1.Size = new System.Drawing.Size(301, 94);
+            this.backgroundTb1.TabIndex = 49;
             // 
             // spellbookLbl
             // 
@@ -641,7 +646,7 @@
             // playerIcon
             // 
             this.playerIcon.Image = global::So_You_Wanna_Make_A_Dnd_Character.Properties.Resources.Default;
-            this.playerIcon.Location = new System.Drawing.Point(11, 12);
+            this.playerIcon.Location = new System.Drawing.Point(11, 16);
             this.playerIcon.Name = "playerIcon";
             this.playerIcon.Size = new System.Drawing.Size(192, 192);
             this.playerIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -701,12 +706,13 @@
             this.CantripList.Name = "CantripList";
             this.CantripList.Size = new System.Drawing.Size(140, 106);
             this.CantripList.TabIndex = 72;
+            this.CantripList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CantripList_ItemCheck);
             // 
             // ProgressBarBtn
             // 
             this.ProgressBarBtn.Location = new System.Drawing.Point(532, 599);
             this.ProgressBarBtn.Name = "ProgressBarBtn";
-            this.ProgressBarBtn.Size = new System.Drawing.Size(259, 26);
+            this.ProgressBarBtn.Size = new System.Drawing.Size(281, 26);
             this.ProgressBarBtn.TabIndex = 73;
             this.ProgressBarBtn.Text = "PROGRESS BAR SIZING";
             this.ProgressBarBtn.UseVisualStyleBackColor = true;
@@ -720,11 +726,52 @@
             this.cantripsLbl.TabIndex = 74;
             this.cantripsLbl.Text = "Cantrips";
             // 
+            // cantripLblCount
+            // 
+            this.cantripLblCount.AutoSize = true;
+            this.cantripLblCount.Location = new System.Drawing.Point(103, 220);
+            this.cantripLblCount.Name = "cantripLblCount";
+            this.cantripLblCount.Size = new System.Drawing.Size(45, 16);
+            this.cantripLblCount.TabIndex = 75;
+            this.cantripLblCount.Text = "( 0 / 4 )";
+            // 
+            // spellbookLblCount
+            // 
+            this.spellbookLblCount.AutoSize = true;
+            this.spellbookLblCount.Location = new System.Drawing.Point(103, 353);
+            this.spellbookLblCount.Name = "spellbookLblCount";
+            this.spellbookLblCount.Size = new System.Drawing.Size(48, 16);
+            this.spellbookLblCount.TabIndex = 76;
+            this.spellbookLblCount.Text = "( X / Y )";
+            // 
+            // RanNameBtn
+            // 
+            this.RanNameBtn.Location = new System.Drawing.Point(460, 25);
+            this.RanNameBtn.Name = "RanNameBtn";
+            this.RanNameBtn.Size = new System.Drawing.Size(61, 23);
+            this.RanNameBtn.TabIndex = 77;
+            this.RanNameBtn.Text = "RNG";
+            this.RanNameBtn.UseVisualStyleBackColor = true;
+            this.RanNameBtn.Click += new System.EventHandler(this.RanNameBtn_Click);
+            // 
+            // randomNameLbl
+            // 
+            this.randomNameLbl.AutoSize = true;
+            this.randomNameLbl.Location = new System.Drawing.Point(422, 6);
+            this.randomNameLbl.Name = "randomNameLbl";
+            this.randomNameLbl.Size = new System.Drawing.Size(99, 16);
+            this.randomNameLbl.TabIndex = 79;
+            this.randomNameLbl.Text = "Random Name";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 684);
+            this.ClientSize = new System.Drawing.Size(825, 684);
+            this.Controls.Add(this.randomNameLbl);
+            this.Controls.Add(this.RanNameBtn);
+            this.Controls.Add(this.spellbookLblCount);
+            this.Controls.Add(this.cantripLblCount);
             this.Controls.Add(this.cantripsLbl);
             this.Controls.Add(this.ProgressBarBtn);
             this.Controls.Add(this.CantripList);
@@ -737,7 +784,7 @@
             this.Controls.Add(this.classFeaturesLbl);
             this.Controls.Add(this.WeaponsLbl);
             this.Controls.Add(this.spellbookLbl);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.backgroundTb1);
             this.Controls.Add(this.backgroundTb);
             this.Controls.Add(this.playerIcon);
             this.Controls.Add(this.CHAbonusTxt);
@@ -839,7 +886,7 @@
         private System.Windows.Forms.RichTextBox CHAbonusTxt;
         private System.Windows.Forms.PictureBox playerIcon;
         private System.Windows.Forms.Label backgroundTb;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox backgroundTb1;
         private System.Windows.Forms.Label spellbookLbl;
         private System.Windows.Forms.Label WeaponsLbl;
         private System.Windows.Forms.Label classFeaturesLbl;
@@ -852,6 +899,10 @@
         private System.Windows.Forms.CheckedListBox CantripList;
         private System.Windows.Forms.Button ProgressBarBtn;
         private System.Windows.Forms.Label cantripsLbl;
+        private System.Windows.Forms.Label cantripLblCount;
+        private System.Windows.Forms.Label spellbookLblCount;
+        private System.Windows.Forms.Button RanNameBtn;
+        private System.Windows.Forms.Label randomNameLbl;
     }
 }
 
